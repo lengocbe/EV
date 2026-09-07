@@ -135,27 +135,27 @@ public class MainActivity extends Activity {
         top.addView(gameInfo, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
         page.addView(top);
 
-        TextView tip = text("Chọn 1 thẻ Việt bên trái và 1 thẻ Anh bên phải.", 14, Color.rgb(88, 95, 111), false);
+        TextView tip = text("Chọn 1 thẻ Anh bên trái và 1 thẻ Việt bên phải.", 14, Color.rgb(88, 95, 111), false);
         tip.setGravity(Gravity.CENTER);
         tip.setPadding(0, dp(4), 0, dp(13));
         page.addView(tip);
 
         LinearLayout columns = new LinearLayout(this);
         columns.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout vietnameseColumn = column("TIẾNG VIỆT", Color.rgb(47, 112, 210));
         LinearLayout englishColumn = column("ENGLISH", Color.rgb(225, 121, 37));
-        columns.addView(vietnameseColumn, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        LinearLayout vietnameseColumn = column("TIẾNG VIỆT", Color.rgb(47, 112, 210));
+        columns.addView(englishColumn, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
         LinearLayout.LayoutParams rightParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
         rightParams.setMargins(dp(8), 0, 0, 0);
-        columns.addView(englishColumn, rightParams);
+        columns.addView(vietnameseColumn, rightParams);
         page.addView(columns);
 
         List<WordItem> left = new ArrayList<>(pairs);
         List<WordItem> right = new ArrayList<>(pairs);
         Collections.shuffle(left);
         Collections.shuffle(right);
-        for (WordItem item : left) vietnameseColumn.addView(card(item.vietnamese, item, false), marginTop(7));
-        for (WordItem item : right) englishColumn.addView(card(item.english, item, true), marginTop(7));
+        for (WordItem item : left) englishColumn.addView(card(item.english, item, true), marginTop(7));
+        for (WordItem item : right) vietnameseColumn.addView(card(item.vietnamese, item, false), marginTop(7));
         setContentView(scroll);
     }
 
