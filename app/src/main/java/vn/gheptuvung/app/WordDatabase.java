@@ -19,14 +19,6 @@ public final class WordDatabase extends SQLiteOpenHelper {
 
     @Override public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE words (id INTEGER PRIMARY KEY AUTOINCREMENT, english TEXT NOT NULL, vietnamese TEXT NOT NULL, UNIQUE(english, vietnamese))");
-        String[][] starter = {
-                {"apple", "quả táo"}, {"book", "quyển sách"}, {"cat", "con mèo"}, {"dog", "con chó"},
-                {"water", "nước"}, {"school", "trường học"}, {"house", "ngôi nhà"}, {"happy", "vui vẻ"},
-                {"friend", "bạn bè"}, {"sun", "mặt trời"}, {"moon", "mặt trăng"}, {"flower", "bông hoa"},
-                {"car", "xe hơi"}, {"food", "đồ ăn"}, {"mother", "mẹ"}, {"father", "bố"},
-                {"red", "màu đỏ"}, {"blue", "màu xanh dương"}, {"morning", "buổi sáng"}, {"thank you", "cảm ơn"}
-        };
-        for (String[] word : starter) insert(db, word[0], word[1]);
     }
 
     @Override public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { }
